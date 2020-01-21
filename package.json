@@ -1,0 +1,66 @@
+{
+	"name": "vscode-open-folder",
+	"displayName": "vscode-open-folder",
+	"description": "",
+	"publisher": "tomer-epstein",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.41.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.openNewInstance",
+		"onCommand:extension.openHere",
+		"onCommand:extension.openFolderDlg"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.openNewInstance",
+				"title": "Open Folder New Instance"
+			},
+			{
+				"command": "extension.openHere",
+				"title": "Open Folder Here"
+			},
+			{
+				"command": "extension.openFolderDlg",
+				"title": "Open Folder Dialog"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "extension.openNewInstance",
+					"group": "navigation@1"
+				},
+				{
+					"command": "extension.openHere",
+					"group": "navigation@1"
+				},
+				{
+					"command": "extension.openFolderDlg",
+					"group": "navigation@1"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"package": "vsce package .",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}
